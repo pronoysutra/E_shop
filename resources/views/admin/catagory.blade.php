@@ -19,6 +19,14 @@
         .input_color {
             color: black;
         }
+
+        #th_color {
+            color: greenyellow;
+        }
+
+        #text_white {
+            color: whitesmoke;
+        }
     </style>
 </head>
 
@@ -38,6 +46,17 @@
                 </div>
                 @endif
 
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
+
                 <div class="div_center">
                     <h2 class="h2_front">Add Catagory</h2>
                     <form action="{{url('/add_catagory')}}" method="POST">
@@ -46,6 +65,38 @@
                         <input type="submit" class="btn btn-primary" name="submit" value="Add Catagory">
                     </form>
 
+                </div>
+
+                <div class="mt-4">
+                    <table class="table table-bordered ">
+                        <div>
+                            <thead>
+                                <tr>
+                                    <th id="th_color" scope="col">serial</th>
+                                    <th id="th_color" scope="col">Catagory Name</th>
+                                    <th id="th_color" scope="col">Action</th>
+
+                                </tr>
+                            </thead>
+                        </div>
+                        @foreach ($data as $index=> $datas)
+                        <tbody>
+                            <tr>
+                                <th id="text_white" scope="row">{{ $loop->iteration }}</th>
+                                <td id="text_white">{{ $datas->catagory_name }}</td>
+                                <td>
+                                    <form action="{{ route('delete.catagory', $datas->id) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @method('DELETE') <!-- Spoof DELETE method -->
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')">Delete</button>
+                                    </form>
+                                </td>
+
+
+                            </tr>
+                        </tbody>
+                        @endforeach
+                    </table>
                 </div>
             </div>
         </div>
