@@ -33,8 +33,19 @@ Route::middleware([
 });
 
 route::get('/redirect', [HomeController::class, 'redirect'])->name('redirect');
-
+//catagory route start
 route::get('/view_catagory', [AdminController::class, 'view_catagory'])->name('view.catagory');
 route::post('/add_catagory', [AdminController::class, 'add_catagory'])->name('add.catagory');
 Route::delete('/delete_catagory/{id}', [AdminController::class, 'delete_catagory'])->name('delete.catagory');
 
+//catagory route end
+
+//product route start
+Route::get('/add_product', [AdminController::class, 'add_product'])->name('add.product');
+
+// Route to handle form submission (POST request)
+Route::post('/add_product', [AdminController::class, 'store_product'])->name('store.product');
+route::get('/show_product', [AdminController::class, 'show_product'])->name('show.product');
+
+
+//product route end
