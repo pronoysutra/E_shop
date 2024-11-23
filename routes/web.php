@@ -44,7 +44,7 @@ Route::delete('/delete_catagory/{id}', [AdminController::class, 'delete_catagory
 Route::get('/add_product', [AdminController::class, 'add_product'])->name('add.product');
 
 // Route to handle form submission (POST request)
-Route::post('/add_product', [AdminController::class, 'store_product'])->name('store.product');
+Route::post('/store_product', [AdminController::class, 'store_product'])->name('store.product');
 route::get('/show_product', [AdminController::class, 'show_product'])->name('show.product');
 
 
