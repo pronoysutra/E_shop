@@ -68,7 +68,7 @@ class AdminController extends Controller
         $product->image = $imageName;
 
         $product->save();
-        return redirect()->back();
+        return redirect()->route('show.product')->with(['message' => 'Product Add successfully!'], 201);;;
     }
 
     public function show_product()
@@ -76,4 +76,42 @@ class AdminController extends Controller
        $product=Product::all();
         return view('admin.show_product',compact('product'));
     }
+    public function delete_product($id){
+        $product = Product::find($id);
+        $product->delete();
+        return redirect()->route('show.product')
+          ->with('message', 'Product deleted successfully');
+    }
+    public function edit_product($id){
+        $product=Product::find($id);
+        $catagory=Catagory::all();
+        return view('admin.edit_product',compact('product','catagory'));
+    }
+
+    public function update_product(Request $request, $id){
+
+        $product =Product::find($id);
+
+        $product->title = $request->title;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->quantity = $request->quantity;
+        $product->discount_price = $request->discount_price;
+        $product->catagory = $request->catagory;
+
+        $image = $request->image;
+        if($image){
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $request->image->move('product', $imageName);
+            $product->image = $imageName;
+        }
+
+
+        $product->save();
+        return redirect()->route('show.product')->with(['message' => 'Product update successfully!'], 201);;
+
+
+    }
+
+
 }

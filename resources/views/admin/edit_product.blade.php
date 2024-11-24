@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <base href="/public">
     @include('admin.css')
 
     <style>
@@ -28,6 +29,13 @@
         .div_design {
             padding-bottom: 15px;
         }
+
+        .center_image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
     </style>
 </head>
 
@@ -41,7 +49,7 @@
 
         <div class="main-panel">
             <div class="content-wrapper">
-                @if(session()->has('message'))
+            @if(session()->has('message'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session()->get('message') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -57,50 +65,51 @@
                     </ul>
                 </div>
                 @endif
-                <div class="div_center">
-                    <h1 class="front_size">Add Product</h1>
 
-                    <form action="{{route('store.product')}}" method="POST" enctype="multipart/form-data">
+                <div class="div_center">
+                    <h1 class="front_size">Edit Product</h1>
+
+                    <form action="{{route('update.product',$product->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="div_design">
                             <label>Product Title:</label>
-                            <input class="text_color" type="text" name="title" placeholder="Write a title " required="">
+                            <input class="text_color" type="text" name="title" placeholder="Write a title "  value="{{$product->title}}">
                         </div>
 
 
 
                         <div class="div_design">
                             <label>Product Description:</label>
-                            <input class="text_color" type="text" name="description" placeholder="Write a description " required>
+                            <input class="text_color" type="text" name="description" placeholder="Write a description "  value="{{$product->description}}">
                         </div>
 
 
 
                         <div class="div_design">
                             <label>Product Price:</label>
-                            <input class="text_color" type="number" name="price" placeholder="Write a price " min="0" required>
+                            <input class="text_color" type="number" name="price" placeholder="Write a price " min="0"  value="{{$product->price}}">
                         </div>
 
 
 
                         <div class="div_design">
                             <label>Product Quantity:</label>
-                            <input class="text_color" type="text" name="quantity" min="0" placeholder="Write a quantity " required>
+                            <input class="text_color" type="text" name="quantity" min="0" placeholder="Write a quantity "  value="{{$product->quantity}}">
                         </div>
 
 
 
                         <div class="div_design">
                             <label>Product Discount Price:</label>
-                            <input class="text_color" type="number" name="discount_price" placeholder="Write a discount price  ">
+                            <input class="text_color" type="number" name="discount_price" placeholder="Write a discount price  " value="{{$product->discount_price}}">
                         </div>
-
 
 
                         <div class="div_design">
                             <label>Product Catagory:</label>
-                            <select class="text_color" name="catagory" required>
-                                <option value="" selected="">Add a catagory here</option>
+                            <select class="text_color" name="catagory" >
+                                <option value="{{$product->catagory}}" selected="">{{$product->catagory}}</option>
+
                                 @foreach($catagory as $catagorys)
                                 <option value="{{$catagorys->catagory_name}}">
                                     {{$catagorys->catagory_name}}
@@ -110,16 +119,18 @@
                         </div>
 
 
-
                         <div class="div_design">
                             <label>Product Image:</label>
-                            <input type="file" name="image" required>
+                            <div>
+                                <img class="center_image" src="{{ asset('product/' . $product->image) }}" alt="Product Image" style="width: 150px; height: auto;">
+                            </div>
+                            <input type="file" name="image" >
                         </div>
 
 
 
                         <div class="div_design">
-                            <input class="btn btn-primary" type="submit" value="Add Product">
+                            <input class="btn btn-primary" type="submit" value="Update Product">
                         </div>
 
                     </form>

@@ -45,7 +45,9 @@ Route::get('/add_product', [AdminController::class, 'add_product'])->name('add.p
 
 // Route to handle form submission (POST request)
 Route::post('/store_product', [AdminController::class, 'store_product'])->name('store.product');
-route::get('/show_product', [AdminController::class, 'show_product'])->name('show.product');
-
+Route::get('/show_product', [AdminController::class, 'show_product'])->name('show.product');
+Route::get('/delete_product/{id}', [AdminController::class, 'delete_product'])->name('delete.product');
+Route::get('/edit_product/{id}', [AdminController::class, 'edit_product'])->name('edit.product');
+Route::post('/update_product/{id}', [AdminController::class, 'update_product'])->name('update.product');
 
 //product route end
