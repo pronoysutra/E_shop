@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $product=Product::all();
+        $product=Product::paginate(10);
         return view('home.userpage',compact('product'));
     }
 
@@ -33,7 +33,8 @@ class HomeController extends Controller
     if ($user && $user->usertype === '1') {
         return view('admin.home'); // Ensure this view exists
     } elseif ($user) {
-        return view('home.userpage'); // Ensure this view exists
+        $product=Product::paginate(10);
+        return view('home.userpage',compact('product'));
     } else {
         return redirect()->route('login')->with('error', 'You must log in first.');
     }
