@@ -1,8 +1,8 @@
 <header class="header_section">
     <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="index.html">
-                <img width="250" src="images/logo.png" alt="#">
+            <a class="navbar-brand" href="{{route('index')}}">
+                <img width="50px" src="images/fasion.png" alt="#">
             </a>
             <button
                 class="navbar-toggler"
@@ -17,7 +17,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="{{route('index')}}">
                             Home
                             <span class="sr-only">(current)</span>
                         </a>

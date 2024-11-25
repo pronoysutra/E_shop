@@ -49,5 +49,5 @@ Route::get('/show_product', [AdminController::class, 'show_product'])->name('sho
 Route::get('/delete_product/{id}', [AdminController::class, 'delete_product'])->name('delete.product');
 Route::get('/edit_product/{id}', [AdminController::class, 'edit_product'])->name('edit.product');
 Route::post('/update_product/{id}', [AdminController::class, 'update_product'])->name('update.product');
-
+Route::get('/details_product/{id}', [HomeController::class, 'details_product'])->name('details.product');
 //product route end
