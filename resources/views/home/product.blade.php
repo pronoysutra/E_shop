@@ -14,9 +14,13 @@
                             <a href="{{route('details.product',$products->id)}}" class="option1">
                                 Details
                             </a>
-                            <a href="" class="option2">
-                                Buy Now
-                            </a>
+                            <form action="{{route('cart.product',$products->id)}}" method="POST">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-4"><input type="number" name="quentity" value="1" min="1"></div>
+                                    <div class="col-md-4 btn btn-sucess"> <input type="submit" value="Add to Cart"></div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div class="img-box">
@@ -27,22 +31,22 @@
                         <h6>
 
                             {{$products->title}}
-                        </h6  >
+                        </h6>
                         @if($products->discount_price)
-                        <h6 style="color:blue" >
+                        <h6 style="color:blue">
                             Discount Price<br>
-                        <span>&#2547; {{ $products->discount_price }} </span>
+                            <span>&#2547; {{ $products->discount_price }} </span>
                         </h6>
 
                         <h6 style="text-decoration: line-through; color:red ">
-                         Price<br>
-                        <span>&#2547; {{$products->price}} </span>
+                            Price<br>
+                            <span>&#2547; {{$products->price}} </span>
                         </h6>
                         @else
-                        <h6 >
-                        <span>&#2547;
-                         {{$products->price}}
-                         </span>
+                        <h6>
+                            <span>&#2547;
+                                {{$products->price}}
+                            </span>
                         </h6>
                         @endif
 

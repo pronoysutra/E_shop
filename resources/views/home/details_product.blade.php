@@ -92,8 +92,13 @@
                         </span>
                     </h6>
                     @endif
-
-                    <a href="" class="btn btn-success"> Add to Cart</a>
+                    <form action="{{route('cart.product',$product->id)}}" method="POST">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-4"><input type="number" name="quentity" value="1" min="1"></div>
+                                    <div class="col-md-4 btn btn-sucess"> <input type="submit" value="Add to Cart"></div>
+                                </div>
+                            </form>
 
 
                 </div>
