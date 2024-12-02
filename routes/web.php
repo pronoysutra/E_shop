@@ -50,5 +50,17 @@ Route::get('/delete_product/{id}', [AdminController::class, 'delete_product'])->
 Route::get('/edit_product/{id}', [AdminController::class, 'edit_product'])->name('edit.product');
 Route::post('/update_product/{id}', [AdminController::class, 'update_product'])->name('update.product');
 Route::get('/details_product/{id}', [HomeController::class, 'details_product'])->name('details.product');
-Route::post('/cart_product/{id}', [HomeController::class, 'cart_product'])->name('cart.product');
+
 //product route end
+
+//Cart route start
+Route::post('/cart_product/{id}', [HomeController::class, 'cart_product'])->name('cart.product');
+Route::get('/show_cart', [HomeController::class, 'show_cart'])->name('show.cart');
+Route::get('/delete_cart/{id}', [HomeController::class, 'delete_cart'])->name('delete.cart');
+Route::get('/cancel_order/{id}', [HomeController::class, 'cancel_order'])->name('cancel.order');
+//Cart route end
+
+//order route start
+Route::get('/cash_order', [HomeController::class, 'cash_order'])->name('cash.order');
+
+//order route end

@@ -96,7 +96,7 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-4"><input type="number" name="quentity" value="1" min="1"></div>
-                                    <div class="col-md-4 btn btn-sucess"> <input type="submit" value="Add to Cart"></div>
+                                    <div class="col-md-2 btn btn-sucess"> <input type="submit" value="Add to Cart"></div>
                                 </div>
                             </form>
 
