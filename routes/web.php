@@ -62,5 +62,7 @@ Route::get('/cancel_order/{id}', [HomeController::class, 'cancel_order'])->name(
 
 //order route start
 Route::get('/cash_order', [HomeController::class, 'cash_order'])->name('cash.order');
-
+Route::get('/stripe/{totalPrice}', [HomeController::class, 'stripe'])->name('stripe');
+Route::post('stripe/{totalPrice}', [HomeController::class, 'stripePost'])->name('stripe.post');
+Route::get('/order', [AdminController::class, 'order'])->name('order');
 //order route end

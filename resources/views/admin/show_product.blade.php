@@ -76,8 +76,8 @@
                                 <td>{{ $products->catagory }}</td>
                                 <td>{{ $products->quantity }}</td>
                                 <td>
-                                    <img class="img_size" src="{{ asset('product/' . $products->image) }}" alt="">
-                                </td>
+                                            <img src="{{ asset('product/' . $products->image) }}" alt="" style="width: 100px; height: auto; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+                                        </td>
 
                                 <td><a class="btn btn-danger m-1" href="{{route('delete.product',$products->id)}}"  onclick="return confirm('Are you sure you want to delete this item?')" >Delete</a></td>
 

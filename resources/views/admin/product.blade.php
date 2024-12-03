@@ -28,6 +28,10 @@
         .div_design {
             padding-bottom: 15px;
         }
+        .img_size{
+            width: 200px;
+            height:20px ;
+        }
     </style>
 </head>
 

@@ -93,7 +93,7 @@
             <div>
                 <h2>Proceed to Order</h2>
                 <a href="{{route('cash.order')}}" class="btn btn-success">Cash On Delivery</a>
-                <a href="" class="btn btn-success">Pay Using Card</a>
+                <a href="{{route('stripe',$totalPrice)}}" class="btn btn-success">Pay Using Card</a>
 
             </div>
 
