@@ -85,6 +85,7 @@
                                         <th scope="col">Delivery Status</th>
                                         <th scope="col">Image</th>
                                         <th scope="col">Delivered</th>
+                                        <th scope="col">Print PDF</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -110,6 +111,7 @@
                                             <p class="text-success">Delivered</p>
                                             @endif
                                         </td>
+                                        <td><a href="{{route('print.pdf', $order->id)}}" class="btn btn-success">Print PDF</a></td>
 
 
                                     </tr>
