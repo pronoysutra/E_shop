@@ -119,5 +119,15 @@ class AdminController extends Controller
         return view('admin.order',compact('order'));
     }
 
+    public function markAsDelivered($id){
+        $order=Order::find($id);
+        $order->delivery_status="delivered";
+        $order->payment_status="paid";
+        $order->save();
+        return redirect()->back();
+
+    }
+
+
 
 }

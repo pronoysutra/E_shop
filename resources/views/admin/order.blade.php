@@ -84,7 +84,7 @@
                                         <th scope="col">Payment Status</th>
                                         <th scope="col">Delivery Status</th>
                                         <th scope="col">Image</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col">Delivered</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -103,14 +103,15 @@
                                         <td>
                                             <img src="{{ asset('product/' . $order->image) }}" alt="" style="width: 100px; height: auto; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
                                         </td>
-
                                         <td>
-                                            <form action="" method="POST" style="display: inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')">Delete</button>
-                                            </form>
+                                            @if($order->delivery_status == 'processing')
+                                            <a href="{{ route('delivered', $order->id) }}" class="btn btn-primary" onclick="return confirm('Are you sure you want to delete this item?')">Delivered</a>
+                                            @else
+                                            <p class="text-success">Delivered</p>
+                                            @endif
                                         </td>
+
+
                                     </tr>
                                     @endforeach
                                 </tbody>
